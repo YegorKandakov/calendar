@@ -20,6 +20,7 @@ module.exports = {
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": 1
+    "react/prefer-stateless-function": 1,
+    "linebreak-style": 0
   }
 };
