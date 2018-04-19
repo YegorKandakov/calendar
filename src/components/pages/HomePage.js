@@ -4,9 +4,9 @@ import Link from 'react-router-dom/Link';
 import {connect} from 'react-redux';
 import * as actions from '../../actions/auth';
 
-const CalendarPage = ({isAuthenticated, logout}) => (
+const HomePage = ({isAuthenticated, logout}) => (
   <div>
-    <h1>Calendar Page</h1>
+    <h1>Home Page</h1>
     { 
       isAuthenticated 
       ? <button onClick={() => logout()}>Logout</button> 
@@ -15,7 +15,7 @@ const CalendarPage = ({isAuthenticated, logout}) => (
   </div>
 );
 
-CalendarPage.propTypes = {
+HomePage.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired
 }
@@ -26,4 +26,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {logout: actions.logout})(CalendarPage);
+export default connect(mapStateToProps, {logout: actions.logout})(HomePage);
