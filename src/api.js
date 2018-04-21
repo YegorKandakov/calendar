@@ -15,6 +15,10 @@ export default {
       axios.post("/api/auth/reset_password_request", {email}),
     validateToken: token =>
       axios.post("/api/auth/validate_token", {token}),
-    resetPassword: data => axios.post('/api/auth/reset_password', {data})
+    resetPassword: data => axios.post('/api/auth/reset_password', {data}),
+  },
+  event: {
+    addEvent: event => 
+      axios.post("/api/event/add", {event})
   }
 };

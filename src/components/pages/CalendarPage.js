@@ -3,21 +3,39 @@ import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
 import {connect} from 'react-redux';
 import * as actions from '../../actions/auth';
+import AddEventForm from '../forms/AddEventForm';
+import {addEvent} from '../../actions/event';
 
-const CalendarPage = ({isAuthenticated, logout}) => (
-  <div>
-    <h1>Calendar Page</h1>
-    { 
-      isAuthenticated 
-      ? <button onClick={() => logout()}>Logout</button> 
-      : <div><Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link></div>
-    }
-  </div>
-);
+class CalendarPage extends React.Component {
+
+  submit = data => this.props.addEvent(data);
+
+  render() {
+    const {isAuthenticated, logout} = this.props;
+
+    return (
+      <div>
+        <h1>Calendar Page</h1>
+        { 
+          isAuthenticated 
+          ? <div><button onClick={() => logout()}>Logout</button></div>
+          : <div><Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link></div>
+        }
+        <br/>
+        {
+          isAuthenticated && <AddEventForm submit={this.submit} />
+        }
+      </div>
+    )
+    
+  }
+
+}
 
 CalendarPage.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  addEvent: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -26,4 +44,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {logout: actions.logout})(CalendarPage);
+export default connect(mapStateToProps, {logout: actions.logout, addEvent})(CalendarPage);

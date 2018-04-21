@@ -6,3 +6,4 @@ export const signup = (data) => (dispatch) =>
     localStorage.bookTrackerJWT = user.token;
     dispatch(userLoggedIn(user));
   });
+
