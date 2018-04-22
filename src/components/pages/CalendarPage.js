@@ -8,8 +8,10 @@ import {addEvent} from '../../actions/event';
 
 class CalendarPage extends React.Component {
 
-  submit = data => this.props.addEvent(data);
-
+  submit = data => {
+    console.log(data);
+    this.props.addEvent(data);
+  }
   render() {
     const {isAuthenticated, logout} = this.props;
 

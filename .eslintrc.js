@@ -24,6 +24,7 @@ module.exports = {
       "linebreak-style": 0,
       "jsx-a11y/anchor-is-valid": 1,
       "jsx-a11y/label-has-for": 1,
-      "import/prefer-default-export": 1
+      "import/prefer-default-export": 1,
+      "prefer-const": 1
     }
 };

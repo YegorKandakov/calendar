@@ -10,7 +10,7 @@ class AddEventForm extends React.Component {
       title: ''
     }
   }
-
+  
   onChange = e => {
     this.setState({
       data: {...this.state.data, [e.target.name]: e.target.value}
@@ -18,7 +18,19 @@ class AddEventForm extends React.Component {
   }
 
   onSubmit = () => {
+    this.convertStartStringToNumber(this.state.data.start);
     this.props.submit(this.state.data);
+  }
+
+  // convert time to number of minutes with starting point 8:00 AM
+  convertStartStringToNumber = (time) => {
+    if (typeof time === 'string') {
+      let timeArr = time.toString().split(":");
+      let timeNum = parseInt(timeArr[0], 10) * 60 + parseInt(timeArr[1], 10) - 8 * 60;
+      this.state.data.start = timeNum;
+      this.setState({data: this.state.data});
+      console.log(this.state);
+    }
   }
 
   render() {
