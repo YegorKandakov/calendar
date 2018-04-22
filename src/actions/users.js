@@ -3,7 +3,7 @@ import { userLoggedIn } from "./auth";
 
 export const signup = (data) => (dispatch) => 
   api.user.signup(data).then(user => {
-    localStorage.bookTrackerJWT = user.token;
+    localStorage.calendarJWT = user.token;
     dispatch(userLoggedIn(user));
   });
 

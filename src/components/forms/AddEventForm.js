@@ -27,6 +27,7 @@ class AddEventForm extends React.Component {
     if (typeof time === 'string') {
       let timeArr = time.toString().split(":");
       let timeNum = parseInt(timeArr[0], 10) * 60 + parseInt(timeArr[1], 10) - 8 * 60;
+      // eslint-disable-next-line
       this.state.data.start = timeNum;
       this.setState({data: this.state.data});
       console.log(this.state);

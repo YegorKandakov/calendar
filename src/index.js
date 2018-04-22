@@ -11,19 +11,21 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './rootReducer';
 import { userLoggedIn } from './actions/auth';
+import setAuthorizationHeader from "./utils/setAuthorizationHeader";
 
 const store = createStore(
   rootReducer, 
   composeWithDevTools(applyMiddleware(thunk)) 
 );
 
-if (localStorage.bookTrackerJWT) {
-  const payload = decode(localStorage.bookTrackerJWT);
+if (localStorage.calendarJWT) {
+  const payload = decode(localStorage.calendarJWT);
   const user = {
-    token: localStorage.bookTrackerJWT,
+    token: localStorage.calendarJWT,
     email: payload.email,
     confirmed: payload.confirmed
   };
+  setAuthorizationHeader(localStorage.calendarJWT);
   store.dispatch(userLoggedIn(user));
 }
 
