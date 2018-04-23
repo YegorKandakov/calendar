@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+table {
+  width: 250px;
+  padding: 0;
+  border-spacing: 0;
+  border: 0;
+  font-family: 'Open Sans'
+}
+
+.leftCol {
+  width: 50px;
+  vertical-align: top;
+}
+
+.rightCol {
+  width: 200px;
+  vertical-align: top;
+}
+
+.time {
+  height: 60px;
+  font-weight: 200;
+  text-align: center;
+}
+
+.big {
+  border-top: 1px solid LightGray;
+  font-size: 16px;
+}
+
+.small {
+  font-size: 12px;
+}

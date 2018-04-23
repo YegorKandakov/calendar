@@ -4,6 +4,7 @@ import Link from 'react-router-dom/Link';
 import {connect} from 'react-redux';
 import * as actions from '../../actions/auth';
 import AddEventForm from '../forms/AddEventForm';
+import Agenda from '../Agenda';
 import {addEvent} from '../../actions/event';
 
 class CalendarPage extends React.Component {
@@ -23,9 +24,13 @@ class CalendarPage extends React.Component {
           ? <div><button onClick={() => logout()}>Logout</button></div>
           : <div><Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link></div>
         }
-        <br/>
+        <h2>Add Event</h2>
         {
           isAuthenticated && <AddEventForm submit={this.submit} />
+        }
+        <h2>Event Calendar</h2>
+        {
+          isAuthenticated && <Agenda />
         }
       </div>
     )
