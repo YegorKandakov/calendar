@@ -30,7 +30,6 @@ class AddEventForm extends React.Component {
       // eslint-disable-next-line
       this.state.data.start = timeNum;
       this.setState({data: this.state.data});
-      console.log(this.state);
     }
   }
 

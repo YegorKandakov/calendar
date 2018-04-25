@@ -1,8 +1,37 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import RemoveButtonPopup from './RemoveButtonPopup';
 
 class Event extends React.Component {
-  
+
+  state = {
+    showRemove: false,
+    popupX: 0,
+    popupY: 0
+  }
+
+  setPopupCoords = (e) => {
+    let rect = ReactDOM.findDOMNode(this).getBoundingClientRect();
+    this.setState({
+      popupX: e.clientX - rect.x,
+      popupY: e.clientY - rect.y
+    });
+  }
+
+  openPopup = () => {
+    this.setState({showRemove: true});
+  }
+
+  closePopup = () => {
+    this.setState({showRemove: false});
+  }
+
+  handleClick = (e) => {
+    this.openPopup(e);
+    this.setPopupCoords(e);
+  }
+
   render() {
 
     const {title, start, duration} = this.props.event
@@ -22,7 +51,12 @@ class Event extends React.Component {
     }
     
     return (
-      <div style={eventStyle}>{title}</div>
+      <div>
+        <div style={eventStyle} onClick={this.handleClick}>{title}</div>
+        <RemoveButtonPopup show={this.state.showRemove} onClose={this.closePopup} 
+          popupX={this.state.popupX} popupY={this.state.popupY}/>
+      </div>
+      
     );
   }
 }
