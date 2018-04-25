@@ -5,12 +5,13 @@ import {connect} from 'react-redux';
 import * as actions from '../../actions/auth';
 import AddEventForm from '../forms/AddEventForm';
 import Agenda from '../Agenda';
-import {addEvent} from '../../actions/event';
+import {addEvent, fetchEvents} from '../../actions/event';
 
 class CalendarPage extends React.Component {
 
+  componentDidMount = () => this.props.fetchEvents();
+
   submit = data => {
-    console.log(data);
     this.props.addEvent(data);
   }
   render() {
@@ -42,7 +43,8 @@ class CalendarPage extends React.Component {
 CalendarPage.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
-  addEvent: PropTypes.func.isRequired
+  addEvent: PropTypes.func.isRequired,
+  fetchEvents: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -51,4 +53,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {logout: actions.logout, addEvent})(CalendarPage);
+export default connect(mapStateToProps, {logout: actions.logout, addEvent, fetchEvents})(CalendarPage);

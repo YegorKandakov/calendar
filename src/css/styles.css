@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 table {
+  position: relative;
   width: 250px;
   padding: 0;
   border-spacing: 0;

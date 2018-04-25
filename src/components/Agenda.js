@@ -1,12 +1,18 @@
 import React from 'react';
-import '../css/Agenda.css';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import '../css/styles.css';
+import {allEventsSelector} from '../actions/event';
+import Event from './Event';
 
 class Agenda extends React.Component {
-  state = {}
-
+  
   render() {
+    console.log(this.props.events);
     return (
-      <table className="table"><tr>
+      <table className="table">
+      <tbody>
+      <tr>
 
 <td className="leftCol">
 <div>
@@ -19,21 +25,36 @@ class Agenda extends React.Component {
 </div>
 
 <div>
-
 <div className="time big" >
   9:00
 </div>
 <div className="time small">
   9:30
 </div>
-
 </div></td>
 
 <td className="rightCol">
 
-Events will be here
-</td></tr></table>
+  {this.props.events.map((event, i) =>
+    <Event key={i} event={event} />
+  )}
+ 
+</td></tr></tbody></table>
     );
   }
 }
-export default Agenda;
+
+Agenda.propTypes = {
+  events: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired
+    })).isRequired
+};
+
+function mapStateToProps(state) {
+  return {
+    events: allEventsSelector(state)
+  }
+}
+
+export default connect(mapStateToProps)(Agenda);

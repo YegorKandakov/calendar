@@ -1,2 +1,4 @@
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
+export const EVENT_CREATED = 'EVENT_CREATED';
+export const EVENTS_FETCHED = 'EVENTS_FETCHED';
