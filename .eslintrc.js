@@ -29,6 +29,8 @@ module.exports = {
       "jsx-a11y/click-events-have-key-events": 1,
       "jsx-a11y/no-static-element-interactions": 1,
       "import/prefer-default-export": 1,
-      "prefer-const": 1
+      "prefer-const": 1,
+      "no-underscore-dangle": 1,
+      "prefer-template": 1
     }
 };

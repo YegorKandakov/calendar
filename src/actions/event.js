@@ -1,8 +1,8 @@
 import {normalize} from "normalizr";
 import { createSelector } from "reselect";
 import api from "../api";
-import { EVENT_CREATED, EVENTS_FETCHED } from "../types";
-import {eventSchema} from "../schemas";
+import { EVENT_CREATED, EVENTS_FETCHED, EVENT_REMOVED } from "../types";
+import {eventSchema, resultSchema} from "../schemas";
 
 const eventAdded = (data) => ({
   type: EVENT_CREATED,
@@ -23,6 +23,17 @@ export const fetchEvents = () => (dispatch) =>
   api.event.fetchAll()
   .then(events => dispatch(eventsFetched(normalize(events, [eventSchema]))));
 
+const eventRemoved = (data) => ({
+  type: EVENT_REMOVED,
+  data
+})
+
+export const removeEvent = (id) => (dispatch) => {
+  api.event.removeEvent(id)
+  .then(result => {
+    dispatch(eventRemoved(normalize(result, resultSchema)))});
+}
+  
 
   // SELECTORS
 export const eventsSelector = state => state.event;

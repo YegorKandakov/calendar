@@ -21,6 +21,8 @@ export default {
     addEvent: event => 
       axios.post("/api/event/add", {event}).then(res => res.data.event),
     fetchAll: () => 
-      axios.get("/api/event").then(res => res.data.events)
+      axios.get("/api/event").then(res => res.data.events),
+    removeEvent: id =>
+      axios.delete("/api/event/delete/" + id)
   }
 };

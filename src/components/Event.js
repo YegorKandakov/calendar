@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import onClickOutside from 'react-onclickoutside';
 import RemoveButtonPopup from './RemoveButtonPopup';
+
 
 class Event extends React.Component {
 
@@ -32,9 +34,11 @@ class Event extends React.Component {
     this.setPopupCoords(e);
   }
 
+  handleClickOutside = () => this.closePopup();
+
   render() {
 
-    const {title, start, duration} = this.props.event
+    const {title, start, duration, _id} = this.props.event
 
     const eventStyle = {
       position: 'absolute',
@@ -52,11 +56,10 @@ class Event extends React.Component {
     
     return (
       <div>
-        <div style={eventStyle} onClick={this.handleClick}>{title}</div>
+        <div style={eventStyle} onClick={this.handleClick} >{title}</div>
         <RemoveButtonPopup show={this.state.showRemove} onClose={this.closePopup} 
-          popupX={this.state.popupX} popupY={this.state.popupY}/>
+          popupX={this.state.popupX} popupY={this.state.popupY} id={_id}/>
       </div>
-      
     );
   }
 }
@@ -65,8 +68,9 @@ Event.propTypes = {
   event: PropTypes.shape({
     title: PropTypes.string.isRequired,
     start: PropTypes.number.isRequired,
-    duration: PropTypes.number.isRequired
+    duration: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired
   }).isRequired
 }
 
-export default Event;
+export default onClickOutside(Event);

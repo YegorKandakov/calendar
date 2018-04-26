@@ -5,3 +5,9 @@ export const eventSchema = new schema.Entity(
   {},
   {idAttribute: "_id"}
 );
+
+export const resultSchema = new schema.Entity(
+  "results",
+  {},
+  {idAttribute: "data"}
+);
