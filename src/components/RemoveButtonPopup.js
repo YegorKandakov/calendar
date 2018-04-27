@@ -32,9 +32,6 @@ class RemoveButtonPopup extends React.Component {
 }
 
 RemoveButtonPopup.propTypes = {
-  // history: PropTypes.shape({
-  //   push: PropTypes.func.isRequired
-  // }).isRequired,
   onClose: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
   popupX: PropTypes.number.isRequired,

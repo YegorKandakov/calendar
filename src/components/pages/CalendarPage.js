@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as actions from '../../actions/auth';
 import AddEventForm from '../forms/AddEventForm';
 import Agenda from '../Agenda';
+import ExportButton from '../ExportButton';
 import {addEvent, fetchEvents} from '../../actions/event';
 
 class CalendarPage extends React.Component {
@@ -26,13 +27,11 @@ class CalendarPage extends React.Component {
           : <div><Link to="/login">Login</Link> or <Link to="/signup">Sign Up</Link></div>
         }
         <h2>Add Event</h2>
-        {
-          isAuthenticated && <AddEventForm submit={this.submit} />
-        }
+        { isAuthenticated && <AddEventForm submit={this.submit} /> }
+        <br/>
+        { isAuthenticated && <ExportButton /> }
         <h2>Event Calendar</h2>
-        {
-          isAuthenticated && <Agenda />
-        }
+        { isAuthenticated && <Agenda /> }
       </div>
     )
     

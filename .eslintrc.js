@@ -23,6 +23,7 @@ module.exports = {
       "react/prefer-stateless-function": 1,
       "react/no-find-dom-node": 1,
       "react/no-array-index-key": 1,
+      "react/forbid-prop-types": 1,
       "linebreak-style": 0,
       "jsx-a11y/anchor-is-valid": 1,
       "jsx-a11y/label-has-for": 1,
